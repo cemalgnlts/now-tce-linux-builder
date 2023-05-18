@@ -17,11 +17,15 @@ You need to have installed:
 
 ## Test
 ```bash
-qemu-system-x86_64 -hda output/tcelinux.img -curses
+qemu-system-x86_64 -hda output/tcelinux.img --enable-kvm -curses
 ```
 
 ## Manual Start
 ```bash
 qemu-img create output/tcelinux 100M
-sudo qemu-system-x86_64 -drive file=output/tcelinux,format=raw -cdrom /root/.cache/packer/e762d3f9c7a9ff32334a9c36632f68d4ec21fa15.iso -curses
+sudo qemu-system-x86_64 -drive file=output/tcelinux,format=raw -cdrom /root/.cache/packer/e762d3f9c7a9ff32334a9c36632f68d4ec21fa15.iso -enable-kvm -curses
 ```
+
+Influenced by these resources for the installation:
+- https://github.com/ognivo777/packer.TinyCoreLinux/blob/master/TinyCoreLinux.json
+- https://github.com/paulera/setup-tinycore-scripts/blob/master/tinycore-install

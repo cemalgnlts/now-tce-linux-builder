@@ -5,15 +5,16 @@
       "accelerator": "kvm",
       "shutdown_command": "sudo poweroff -f",
       "shutdown_timeout": "2m",
+      "boot_key_interval": "50ms",
       "boot_command": [
         "<enter>",
         "<wait5>",
-        "tce-load -wi openssh<enter><wait5>",
+        "tce-load -wi openssh<enter><wait3>",
         "passwd<enter>",
         "p@ssw0rd<enter>",
         "p@ssw0rd<enter>",
         "sudo cp /usr/local/etc/ssh/sshd_config.orig /usr/local/etc/ssh/sshd_config<enter>",
-        "sudo /usr/local/etc/init.d/openssh start<enter><wait1>"
+        "sudo /usr/local/etc/init.d/openssh start<enter><wait3>"
       ],
       "boot_wait": "3s",
       "disk_size": 100,
@@ -37,7 +38,7 @@
       "type": "shell",
       "scripts": [
         "scripts/mount.sh",
-        "scripts/clean.sh"
+        "scripts/customize.sh"
       ]
     }
   ]

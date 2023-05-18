@@ -1,1 +1,0 @@
-qemu-system-x86_64 -drive file=output/tcelinux,format=raw -curses
