@@ -1,0 +1,44 @@
+{
+  "builders": [
+    {
+      "type": "qemu",
+      "accelerator": "kvm",
+      "shutdown_command": "sudo poweroff -f",
+      "shutdown_timeout": "2m",
+      "boot_command": [
+        "<enter>",
+        "<wait5>",
+        "tce-load -wi openssh<enter><wait5>",
+        "passwd<enter>",
+        "p@ssw0rd<enter>",
+        "p@ssw0rd<enter>",
+        "sudo cp /usr/local/etc/ssh/sshd_config.orig /usr/local/etc/ssh/sshd_config<enter>",
+        "sudo /usr/local/etc/init.d/openssh start<enter><wait1>"
+      ],
+      "boot_wait": "3s",
+      "disk_size": 100,
+      "disk_detect_zeroes": "unmap",
+      "disk_interface": "ide",
+      "format": "raw",
+      "headless": true,
+      "iso_checksum": "md5:d88148087fb68e4e1e1c6d5ecadddb44",
+      "iso_url": "http://tinycorelinux.net/13.x/x86/archive/13.1/Core-13.1.iso",
+      "memory": 2048,
+      "vm_name": "tcelinux",
+      "ssh_wait_timeout": "60s",
+      "ssh_pty": true,
+      "ssh_username": "tc",
+      "ssh_password": "p@ssw0rd",
+      "ssh_port": 22
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/mount.sh",
+        "scripts/clean.sh"
+      ]
+    }
+  ]
+}
