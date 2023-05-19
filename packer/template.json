@@ -5,7 +5,7 @@
       "accelerator": "kvm",
       "shutdown_command": "sudo poweroff -f",
       "shutdown_timeout": "2m",
-      "boot_key_interval": "50ms",
+      "boot_key_interval": "0.01s",
       "boot_command": [
         "<enter>",
         "<wait5>",
@@ -23,7 +23,7 @@
       "format": "raw",
       "headless": true,
       "iso_checksum": "md5:d88148087fb68e4e1e1c6d5ecadddb44",
-      "iso_url": "http://tinycorelinux.net/13.x/x86/archive/13.1/Core-13.1.iso",
+      "iso_url": "http://tinycorelinux.net/13.x/x86/release/Core-13.1.iso",
       "memory": 2048,
       "vm_name": "tcelinux",
       "ssh_wait_timeout": "60s",
