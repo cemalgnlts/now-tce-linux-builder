@@ -1,6 +1,8 @@
 # v86-tce-linux-builder
 
-This repo contains scripts to create an [Tiny Core Linux](http://tinycorelinux.net/) image for use with [v86](https://github.com/copy/v86/).
+This repo contains scripts to create an [Tiny Core Linux](http://tinycorelinux.net/) image for use with [now](https://github.com/cemalgnlts/now/).
+
+This repo contains a customized version of the following repo: [cemalgnlts/v86-tce-linux-builder](https://github.com/cemalgnlts/v86-tce-linux-builder/)
 
 ## Requirements
 
@@ -18,6 +20,7 @@ You need to have installed:
 ## Test
 ```bash
 qemu-system-x86_64 -hda output/tcelinux.img --enable-kvm -curses
+qemu-system-x86_64 --enable-kvm -nographic -serial mon:stdio -drive file=output/tcelinux.img,format=raw
 ```
 
 ## Manual Start

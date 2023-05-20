@@ -8,7 +8,7 @@ echo "Node installing"
 tce-load -wi node
 
 time node --version
-time node --version
+echo 'console.log("Hello World")' | time node
 
 #########################
 
