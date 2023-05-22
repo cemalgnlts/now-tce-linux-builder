@@ -17,14 +17,14 @@
         "sudo /usr/local/etc/init.d/openssh start<enter><wait3>"
       ],
       "boot_wait": "3s",
-      "disk_size": 100,
+      "disk_size": 250,
       "disk_detect_zeroes": "unmap",
       "disk_interface": "ide",
       "format": "raw",
       "headless": true,
       "iso_checksum": "md5:d88148087fb68e4e1e1c6d5ecadddb44",
       "iso_url": "http://tinycorelinux.net/13.x/x86/release/Core-13.1.iso",
-      "memory": 2048,
+      "memory": 512,
       "vm_name": "tcelinux",
       "ssh_wait_timeout": "60s",
       "ssh_pty": true,
@@ -34,6 +34,11 @@
     }
   ],
   "provisioners": [
+    {
+	    "type": "file",
+	    "source": "files/now-repl.js",
+	    "destination": "/tmp/.now-repl.js"
+    },
     {
       "type": "shell",
       "scripts": [

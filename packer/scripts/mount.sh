@@ -34,7 +34,10 @@ zcat /mnt/sr0/boot/core.gz | sudo cpio -i
 
 echo "Activate serial0"
 
-sudo sed -i "7cttyS0::respawn:/sbin/getty -nl /sbin/autologin -L 115200 /dev/ttyS0 vt100" etc/inittab
+# sudo sed -i "7attyS0::respawn:/sbin/getty -nl login -f root 115200 /dev/ttyS0 vt100" etc/inittab
+
+mv /tmp/.now-repl.js opt/now-repl.js
+echo 'console.log("Hello World") > opt/hello.js'
 
 sudo sh -c 'echo "unset HISTFILE" >> etc/skel/.ashrc'
 
@@ -44,8 +47,8 @@ cd ..
 
 sudo mv core.gz /mnt/sda1/boot/core.gz
 
-sudo sh -c 'echo "console=ttyS0,115200" >> /mnt/sda1/boot/cmdline.txt'
-sudo sh -c 'echo "enable_uart=1" >> /mnt/sda1/boot/config.txt'
+# sudo sh -c 'echo "console=ttyS0,115200" >> /mnt/sda1/boot/cmdline.txt'
+# sudo sh -c 'echo "enable_uart=1" >> /mnt/sda1/boot/config.txt'
 
 #######################
 
@@ -62,6 +65,6 @@ set default=0
 set timeout=0
 
 menuentry \"Tiny Core\" {
-    linux /boot/vmlinuz loglevel=3 user=tc console=tty0 console=ttyS0,115200 noembed nomodeset tce=sda1 opt=sda1 home=sda1 restore=sda1
+    linux /boot/vmlinuz loglevel=3 user=tc noembed nomodeset tce=sda1 opt=sda1 home=sda1 restore=sda1
     initrd /boot/core.gz
 }" >> /mnt/sda1/boot/grub/grub.cfg'

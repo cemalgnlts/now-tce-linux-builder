@@ -19,14 +19,13 @@ You need to have installed:
 
 ## Test
 ```bash
-qemu-system-x86_64 -hda output/tcelinux.img --enable-kvm -curses
 qemu-system-x86_64 --enable-kvm -nographic -serial mon:stdio -drive file=output/tcelinux.img,format=raw
 ```
 
 ## Manual Start
 ```bash
-qemu-img create output/tcelinux 100M
-sudo qemu-system-x86_64 -drive file=output/tcelinux,format=raw -cdrom /root/.cache/packer/e762d3f9c7a9ff32334a9c36632f68d4ec21fa15.iso -enable-kvm -curses
+qemu-img create output/tcelinux 250M
+sudo qemu-system-x86_64 -drive file=output/tcelinux.img,format=raw -cdrom /root/.cache/packer/e762d3f9c7a9ff32334a9c36632f68d4ec21fa15.iso -enable-kvm -curses
 ```
 
 Influenced by these resources for the installation:
